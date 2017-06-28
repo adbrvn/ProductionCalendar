@@ -1,0 +1,347 @@
+{
+  "content": {
+    "id": 2033,
+    "entityType": "calendarYear",
+    "quarters": [
+      {
+        "id": 2,
+        "entityType": "calendarQuarter",
+        "months": [
+          {
+            "id": 5,
+            "name": "\u041c\u0430\u0439",
+            "entityType": "calendarMonth",
+            "holidays": [
+              {
+                "name": "\u041f\u0440\u0430\u0437\u0434\u043d\u0438\u043a \u0412\u0435\u0441\u043d\u044b \u0438&nbsp;\u0422\u0440\u0443\u0434\u0430",
+                "days": [
+                  1
+                ],
+                "isPreholiday": false
+              },
+              {
+                "name": "\u0414\u0435\u043d\u044c \u041f\u043e\u0431\u0435\u0434\u044b",
+                "days": [
+                  9
+                ],
+                "isPreholiday": false
+              }
+            ],
+            "weeks": [
+              {
+                "id": 18,
+                "entityType": "calendarWeek",
+                "days": [
+                  {
+                    "id": 170501,
+                    "name": "\u041f\u0440\u0430\u0437\u0434\u043d\u0438\u043a \u0412\u0435\u0441\u043d\u044b \u0438&nbsp;\u0422\u0440\u0443\u0434\u0430",
+                    "entityType": "calendarDay",
+                    "date": "2017-05-01T00:00:00+0300",
+                    "type": "holiday",
+                    "day": 1
+                  },
+                  {
+                    "id": 170502,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-02T00:00:00+0300",
+                    "type": "general",
+                    "day": 2
+                  },
+                  {
+                    "id": 170503,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-03T00:00:00+0300",
+                    "type": "general",
+                    "day": 3
+                  },
+                  {
+                    "id": 170504,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-04T00:00:00+0300",
+                    "type": "general",
+                    "day": 4
+                  },
+                  {
+                    "id": 170505,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-05T00:00:00+0300",
+                    "type": "general",
+                    "day": 5
+                  },
+                  {
+                    "id": 170506,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-06T00:00:00+0300",
+                    "type": "weekend",
+                    "day": 6
+                  },
+                  {
+                    "id": 170507,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-07T00:00:00+0300",
+                    "type": "weekend",
+                    "day": 7
+                  }
+                ]
+              },
+              {
+                "id": 19,
+                "entityType": "calendarWeek",
+                "days": [
+                  {
+                    "id": 170508,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-08T00:00:00+0300",
+                    "type": "holiday",
+                    "day": 8
+                  },
+                  {
+                    "id": 170509,
+                    "name": "\u0414\u0435\u043d\u044c \u041f\u043e\u0431\u0435\u0434\u044b",
+                    "entityType": "calendarDay",
+                    "date": "2017-05-09T00:00:00+0300",
+                    "type": "holiday",
+                    "day": 9
+                  },
+                  {
+                    "id": 170510,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-10T00:00:00+0300",
+                    "type": "general",
+                    "day": 10
+                  },
+                  {
+                    "id": 170511,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-11T00:00:00+0300",
+                    "type": "general",
+                    "day": 11
+                  },
+                  {
+                    "id": 170512,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-12T00:00:00+0300",
+                    "type": "general",
+                    "day": 12
+                  },
+                  {
+                    "id": 170513,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-13T00:00:00+0300",
+                    "type": "weekend",
+                    "day": 13
+                  },
+                  {
+                    "id": 170514,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-14T00:00:00+0300",
+                    "type": "weekend",
+                    "day": 14
+                  }
+                ]
+              },
+              {
+                "id": 20,
+                "entityType": "calendarWeek",
+                "days": [
+                  {
+                    "id": 170515,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-15T00:00:00+0300",
+                    "type": "general",
+                    "day": 15
+                  },
+                  {
+                    "id": 170516,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-16T00:00:00+0300",
+                    "type": "general",
+                    "day": 16
+                  },
+                  {
+                    "id": 170517,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-17T00:00:00+0300",
+                    "type": "general",
+                    "day": 17
+                  },
+                  {
+                    "id": 170518,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-18T00:00:00+0300",
+                    "type": "general",
+                    "day": 18
+                  },
+                  {
+                    "id": 170519,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-19T00:00:00+0300",
+                    "type": "general",
+                    "day": 19
+                  },
+                  {
+                    "id": 170520,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-20T00:00:00+0300",
+                    "type": "weekend",
+                    "day": 20
+                  },
+                  {
+                    "id": 170521,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-21T00:00:00+0300",
+                    "type": "weekend",
+                    "day": 21
+                  }
+                ]
+              },
+              {
+                "id": 21,
+                "entityType": "calendarWeek",
+                "days": [
+                  {
+                    "id": 170522,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-22T00:00:00+0300",
+                    "type": "general",
+                    "day": 22
+                  },
+                  {
+                    "id": 170523,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-23T00:00:00+0300",
+                    "type": "general",
+                    "day": 23
+                  },
+                  {
+                    "id": 170524,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-24T00:00:00+0300",
+                    "type": "general",
+                    "day": 24
+                  },
+                  {
+                    "id": 170525,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-25T00:00:00+0300",
+                    "type": "general",
+                    "day": 25
+                  },
+                  {
+                    "id": 170526,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-26T00:00:00+0300",
+                    "type": "general",
+                    "day": 26
+                  },
+                  {
+                    "id": 170527,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-27T00:00:00+0300",
+                    "type": "weekend",
+                    "day": 27
+                  },
+                  {
+                    "id": 170528,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-28T00:00:00+0300",
+                    "type": "weekend",
+                    "day": 28
+                  }
+                ]
+              },
+              {
+                "id": 22,
+                "entityType": "calendarWeek",
+                "days": [
+                  {
+                    "id": 170529,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-29T00:00:00+0300",
+                    "type": "general",
+                    "day": 29
+                  },
+                  {
+                    "id": 170530,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-30T00:00:00+0300",
+                    "type": "general",
+                    "day": 30
+                  },
+                  {
+                    "id": 170531,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-05-31T00:00:00+0300",
+                    "type": "general",
+                    "day": 31
+                  },
+                  {
+                    "id": 170601,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-06-01T00:00:00+0300",
+                    "type": "out_of_range",
+                    "day": 1
+                  },
+                  {
+                    "id": 170602,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-06-02T00:00:00+0300",
+                    "type": "out_of_range",
+                    "day": 2
+                  },
+                  {
+                    "id": 170603,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-06-03T00:00:00+0300",
+                    "type": "out_of_range_holiday",
+                    "day": 3
+                  },
+                  {
+                    "id": 170604,
+                    "name": null,
+                    "entityType": "calendarDay",
+                    "date": "2017-06-04T00:00:00+0300",
+                    "type": "out_of_range_holiday",
+                    "day": 4
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
