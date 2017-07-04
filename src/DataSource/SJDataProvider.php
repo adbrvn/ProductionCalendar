@@ -27,7 +27,7 @@ class SJDataProvider implements IDataProvider
                         switch ($day['type']) {
                             case 'weekend':
                             case 'holiday':
-                                $holidays[] = (new \DateTime($day['date']))->format($dateFormat);
+                                $holidays[(new \DateTime($day['date']))->format($dateFormat)] = $day['type'];
                                 break;
                         }
                     }

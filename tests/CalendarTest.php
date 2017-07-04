@@ -12,9 +12,9 @@ class CalendarTest extends \PHPUnit\Framework\TestCase
             ->method('getHolidayList')
             ->with($this->anything(), $this->equalTo('Y-m-d'))
             ->will($this->returnValue([
-                '2017-06-10',
-                '2017-06-11',
-                '2017-06-12',
+                '2017-06-10' => 'weekday',
+                '2017-06-11' => 'weekday',
+                '2017-06-12' => 'holiday',
             ])
         );
 
@@ -26,7 +26,7 @@ class CalendarTest extends \PHPUnit\Framework\TestCase
         return new \ProductionCalendar\Calendar($this->getProviderMock());
     }
 
-    public function testGetIsHolidayShouldReturnTrue()
+    public function testGetIsHolidayShouldReturnTrueOnHoliday()
     {
         $holiday = new DateTime('2017-06-12');
         $obj = $this->getTestObject();
@@ -34,29 +34,78 @@ class CalendarTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($obj->getIsHoliday($holiday));
     }
 
-    public function testGetIsHolidayShouldReturnFalse()
+    public function testGetIsHolidayShouldReturnFalseOnWorkingDay()
     {
-        $workday =  new DateTime('2017-06-09');
+        $workingday =  new DateTime('2017-06-09');
         $obj = $this->getTestObject();
 
-        $this->assertFalse($obj->getIsHoliday($workday));
+        $this->assertFalse($obj->getIsHoliday($workingday));
     }
 
-    public function testGetIsWorkdayShouldReturnTrue()
+    public function testGetIsHolidayShouldReturnFalseOnWeekday()
     {
-        $workday = new DateTime('2017-06-09');
+        $weekday =  new DateTime('2017-06-10');
         $obj = $this->getTestObject();
 
-        $this->assertTrue($obj->getIsWorkday($workday));
+        $this->assertFalse($obj->getIsHoliday($weekday));
     }
 
-    public function testGetIsWorkdayShouldReturnFalse()
+    public function testGetIsWeekdayShouldReturnTrueOnWeekday()
+    {
+        $weekday =  new DateTime('2017-06-10');
+        $obj = $this->getTestObject();
+
+        $this->assertTrue($obj->getIsWeekday($weekday));
+    }
+
+    public function testGetIsWeekdayShouldReturnFalseOnHoliday()
+    {
+        $holiday =  new DateTime('2017-06-12');
+        $obj = $this->getTestObject();
+
+        $this->assertFalse($obj->getIsWeekday($holiday));
+    }
+
+    public function testGetIsWorkingdayShouldReturnTrue()
+    {
+        $workingday = new DateTime('2017-06-09');
+        $obj = $this->getTestObject();
+
+        $this->assertTrue($obj->getIsWorkingday($workingday));
+    }
+
+    public function testGetIsWorkingdayShouldReturnFalse()
     {
         $holiday = new DateTime('2017-06-12');
         $obj = $this->getTestObject();
 
-        $this->assertFalse($obj->getIsWorkday($holiday));
+        $this->assertFalse($obj->getIsWorkingday($holiday));
     }
+
+    public function testGetIsNonWorkingdayShouldReturnTrueForHoliday()
+    {
+        $workingday = new DateTime('2017-06-12');
+        $obj = $this->getTestObject();
+
+        $this->assertTrue($obj->getIsNonWorkingday($workingday));
+    }
+
+    public function testGetIsNonWorkingdayShouldReturnTrueForWeekendDay()
+    {
+        $workingday = new DateTime('2017-06-11');
+        $obj = $this->getTestObject();
+
+        $this->assertTrue($obj->getIsNonWorkingday($workingday));
+    }
+
+    public function testGetIsNonWorkingdayShouldReturnFalse()
+    {
+        $holiday = new DateTime('2017-06-09');
+        $obj = $this->getTestObject();
+
+        $this->assertFalse($obj->getIsNonWorkingday($holiday));
+    }
+
 
     /**
      * @dataProvider firstHolidayFixtures
@@ -80,18 +129,18 @@ class CalendarTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @dataProvider firstWorkdayFixtures
+     * @dataProvider firstWorkingdayFixtures
      */
-    public function testFindFirstWorkday($startday, $workday)
+    public function testFindFirstWorkingday($startday, $workingday)
     {
         $startday = new DateTime($startday);
-        $workday = new DateTime($workday);
+        $workingday = new DateTime($workingday);
         $obj = $this->getTestObject();
 
-        $this->assertEquals($workday, $obj->findFirstWorkday($startday));
+        $this->assertEquals($workingday, $obj->findFirstWorkingday($startday));
     }
 
-    public function firstWorkdayFixtures()
+    public function firstWorkingdayFixtures()
     {
         return [
             ['2017-06-11', '2017-06-13'],
@@ -100,28 +149,28 @@ class CalendarTest extends \PHPUnit\Framework\TestCase
         ];
     }
 
-    public function testFindFirstWorkdayShouldNotChangeInput()
+    public function testFindFirstWorkingdayShouldNotChangeInput()
     {
         $holiday = new DateTime('2017-06-11');
         $holidayText = $holiday->format(DateTime::W3C);
         $obj = $this->getTestObject();
 
-        $workday = $obj->findFirstWorkday($holiday);
+        $workingday = $obj->findFirstWorkingday($holiday);
 
-        $this->assertNotEquals($holiday, $workday);
+        $this->assertNotEquals($holiday, $workingday);
         $this->assertEquals($holidayText, $holiday->format(DateTime::W3C));
     }
 
     public function testFindFirstHolidayShouldNotChangeInput()
     {
-        $workday = new DateTime('2017-06-08');
-        $workdayText = $workday->format(DateTime::W3C);
+        $workingday = new DateTime('2017-06-08');
+        $workingdayText = $workingday->format(DateTime::W3C);
         $obj = $this->getTestObject();
 
-        $holiday = $obj->findFirstHoliday($workday);
+        $holiday = $obj->findFirstHoliday($workingday);
 
-        $this->assertNotEquals($workday, $holiday);
-        $this->assertEquals($workdayText, $workday->format(DateTime::W3C));
+        $this->assertNotEquals($workingday, $holiday);
+        $this->assertEquals($workingdayText, $workingday->format(DateTime::W3C));
     }
 
     public function testThatCalendarCanCreateWithDefaults()
@@ -131,26 +180,26 @@ class CalendarTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(\ProductionCalendar\Calendar::class, $obj);
     }
 
-    public function testGetIsLastWorkdayOfWeekShouldReturnTrue()
+    public function testGetIsLastWorkingdayOfWeekShouldReturnTrue()
     {
         $obj = $this->getTestObject();
 
-        $this->assertTrue($obj->getIsLastWorkdayOfWeek(new DateTime('2017-06-09')));
+        $this->assertTrue($obj->getIsLastWorkingdayOfWeek(new DateTime('2017-06-09')));
     }
 
-    public function testGetIsLastWorkdayOfWeekShouldReturnFalseForWorkday()
+    public function testGetIsLastWorkingdayOfWeekShouldReturnFalseForWorkingday()
     {
         $obj = $this->getTestObject();
 
-        $this->assertFalse($obj->getIsLastWorkdayOfWeek(new DateTime('2017-06-08')));
+        $this->assertFalse($obj->getIsLastWorkingdayOfWeek(new DateTime('2017-06-08')));
 
     }
 
-    public function testGetIsLastWorkdayOfWeekShouldReturnFalseForHoliday()
+    public function testGetIsLastWorkingdayOfWeekShouldReturnFalseForHoliday()
     {
         $obj = $this->getTestObject();
 
-        $this->assertFalse($obj->getIsLastWorkdayOfWeek(new DateTime('2017-06-11')));
+        $this->assertFalse($obj->getIsLastWorkingdayOfWeek(new DateTime('2017-06-11')));
 
     }
 }
