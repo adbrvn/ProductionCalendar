@@ -25,14 +25,14 @@ class Calendar
         $this->dataSource = $dataSource;
     }
 
-    public function getIsWorkingday(\DateTime $date)
+    public function getIsWorkday(\DateTime $date)
     {
-        return $this->isWorkingDay($date);
+        return $this->isWorkDay($date);
     }
 
-    public function getIsNonWorkingday(\DateTime $date)
+    public function getIsNonWorkday(\DateTime $date)
     {
-        return $this->isNonWorkingDay($date);
+        return $this->isNonWorkDay($date);
     }
 
     public function getIsHoliday(\DateTime $date)
@@ -45,12 +45,12 @@ class Calendar
         return $this->isDayOfType('weekday', $date);
     }
 
-    public function findFirstWorkingday(\DateTime $from)
+    public function findFirstWorkday(\DateTime $from)
     {
         $interval = new \DateInterval("P1D");
         $date = clone($from);
 
-        while ($this->isNonWorkingDay($date)) {
+        while ($this->isNonWorkDay($date)) {
             $date->add($interval);
         }
 
@@ -62,28 +62,28 @@ class Calendar
         $interval = new \DateInterval("P1D");
         $date = clone($from);
 
-        while ($this->isWorkingDay($date)) {
+        while ($this->isWorkDay($date)) {
             $date->add($interval);
         }
 
         return $date;
     }
 
-    public function getIsLastWorkingdayOfWeek(\DateTime $date)
+    public function getIsLastWorkdayOfWeek(\DateTime $date)
     {
         $interval = new \DateInterval("P1D");
         $currentDay = clone($date);
         $endOfWeek = clone($date);
         $endOfWeek->modify('Sunday');
 
-        if ($this->isNonWorkingDay($date)) {
+        if ($this->isNonWorkDay($date)) {
             return false;
         }
 
         while ($endOfWeek > $currentDay) {
             $currentDay->add($interval);
 
-            if ($this->isWorkingDay($currentDay)) {
+            if ($this->isWorkDay($currentDay)) {
                 return false;
             }
         }
@@ -91,12 +91,12 @@ class Calendar
         return true;
     }
 
-	protected function isWorkingDay(\DateTime $date)
+	protected function isWorkDay(\DateTime $date)
 	{
-		return !$this->isNonWorkingDay($date);
+		return !$this->isNonWorkDay($date);
 	}
 
-    protected function isNonWorkingDay(\DateTime $date)
+    protected function isNonWorkDay(\DateTime $date)
     {
 		return $this->isDayOfType('holiday', $date) || $this->isDayOfType('weekday', $date);
     }
