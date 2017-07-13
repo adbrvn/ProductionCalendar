@@ -40,9 +40,9 @@ class Calendar
         return $this->isDayOfType('holiday', $date);
     }
 
-    public function getIsWeekday(\DateTime $date)
+    public function getIsWeekend(\DateTime $date)
     {
-        return $this->isDayOfType('weekday', $date);
+        return $this->isDayOfType('weekend', $date);
     }
 
     public function findFirstWorkday(\DateTime $from)
@@ -98,7 +98,7 @@ class Calendar
 
     protected function isNonWorkDay(\DateTime $date)
     {
-		return $this->isDayOfType('holiday', $date) || $this->isDayOfType('weekday', $date);
+		return $this->isDayOfType('holiday', $date) || $this->isDayOfType('weekend', $date);
     }
 
     protected function isHoliday(\DateTime $date)
@@ -106,19 +106,12 @@ class Calendar
 		return $this->isDayOfType('holiday', $date);
 	}
 
-	protected function isWeekday(\DateTime $date)
-	{
-		return $this->isDayOfType('weekday', $date);
-	}
-
 	protected function isDayOfType($type, \DateTime $date)
 	{
         $dateFormat = 'Y-m-d';
         $year = (int) $date->format('Y');
         if (empty($this->holidays[$year])) {
-			foreach ($this->dataSource->getHolidayList($year, $dateFormat) as $holidayDate => $holidayType) {
-				$this->holidays[$year][$holidayDate] = $holidayType;
-			}
+			$this->holidays[$year] = $this->dataSource->getHolidayList($year, $dateFormat);
         }
 
         return isset($this->holidays[$year][$date->format($dateFormat)]) ? $this->holidays[$year][$date->format($dateFormat)] == $type : false;

@@ -12,8 +12,8 @@ class CalendarTest extends \PHPUnit\Framework\TestCase
             ->method('getHolidayList')
             ->with($this->anything(), $this->equalTo('Y-m-d'))
             ->will($this->returnValue([
-                '2017-06-10' => 'weekday',
-                '2017-06-11' => 'weekday',
+                '2017-06-10' => 'weekend',
+                '2017-06-11' => 'weekend',
                 '2017-06-12' => 'holiday',
             ])
         );
@@ -42,28 +42,28 @@ class CalendarTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($obj->getIsHoliday($workday));
     }
 
-    public function testGetIsHolidayShouldReturnFalseOnWeekday()
+    public function testGetIsHolidayShouldReturnFalseOnWeekend()
     {
-        $weekday =  new DateTime('2017-06-10');
+        $weekend =  new DateTime('2017-06-10');
         $obj = $this->getTestObject();
 
-        $this->assertFalse($obj->getIsHoliday($weekday));
+        $this->assertFalse($obj->getIsHoliday($weekend));
     }
 
-    public function testGetIsWeekdayShouldReturnTrueOnWeekday()
+    public function testGetIsWeekendShouldReturnTrueOnWeekend()
     {
-        $weekday =  new DateTime('2017-06-10');
+        $weekend =  new DateTime('2017-06-10');
         $obj = $this->getTestObject();
 
-        $this->assertTrue($obj->getIsWeekday($weekday));
+        $this->assertTrue($obj->getIsWeekend($weekend));
     }
 
-    public function testGetIsWeekdayShouldReturnFalseOnHolidayDay()
+    public function testGetIsWeekendShouldReturnFalseOnHolidayDay()
     {
         $holiday =  new DateTime('2017-06-12');
         $obj = $this->getTestObject();
 
-        $this->assertFalse($obj->getIsWeekday($holiday));
+        $this->assertFalse($obj->getIsWeekend($holiday));
     }
 
     public function testGetIsWorkdayShouldReturnTrue()
